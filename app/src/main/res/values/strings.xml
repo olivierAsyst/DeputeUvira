@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Député National</string>
+
+    <string name="badge_numero_prefix">N°</string>
+    <string name="numero_vote_valeur">12</string>
+
+    <string name="nom_depute">Hon. CLAUDE MISARE</string>
+    <string name="titre_depute">Député national — Uvira, Sud-Kivu</string>
+    <string name="photo_depute_desc">Photo du député</string>
+    <string name="citation_accueil">« Servir Uvira avec constance, deux mandats, une seule conviction. »</string>
+
+    <string name="label_mandats">Mandats</string>
+    <string name="valeur_mandats">2</string>
+    <string name="label_realisations">Réalisations</string>
+    <string name="valeur_realisations">47</string>
+
+    <string name="titre_prochain_evenement">Prochain événement</string>
+    <string name="exemple_titre_evenement">Meeting populaire — Kalundu</string>
+    <string name="exemple_date_evenement">Sam. 26 juillet, 15h00</string>
+
+    <string name="titre_derniere_actualite">Dernière actualité</string>
+    <string name="exemple_titre_actualite">Réhabilitation de l\'école de Kavimvira</string>
+    <string name="exemple_extrait_actualite">Intervention à l\'Assemblée nationale sur le budget éducation...</string>
+    <string name="nav_accueil">Accueil</string>
+    <string name="nav_realisations">Réalisations</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_actualites">Actus</string>
+    <string name="nav_menu">Menu</string>
+    <string name="titre_ecran_realisations">Réalisations</string>
+    <string name="filtre_tous">Tous</string>
+    <string name="filtre_education">Éducation</string>
+    <string name="filtre_sante">Santé</string>
+    <string name="filtre_eau">Eau</string>
+</resources>
