@@ -33,9 +33,25 @@ public class RealisationsActivity extends AppCompatActivity {
         configurerListe();
         configurerFiltres();
 
+        final int paddingTopOriginalHeader = binding.headerRealisations.getPaddingTop();
+        final int paddingBottomOriginalNav = binding.bottomNavigation.getPaddingBottom();
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
+            binding.headerRealisations.setPadding(
+                    binding.headerRealisations.getPaddingLeft(),
+                    paddingTopOriginalHeader + systemBars.top,
+                    binding.headerRealisations.getPaddingRight(),
+                    binding.headerRealisations.getPaddingBottom()
+            );
+
+            binding.bottomNavigation.setPadding(
+                    binding.bottomNavigation.getPaddingLeft(),
+                    binding.bottomNavigation.getPaddingTop(),
+                    binding.bottomNavigation.getPaddingRight(),
+                    paddingBottomOriginalNav + systemBars.bottom
+            );
             return insets;
         });
         configurerNavigationBasse();
@@ -59,17 +75,17 @@ public class RealisationsActivity extends AppCompatActivity {
     }
 
     private void configurerListe() {
-        adapter = new RealisationAdapter(realisation -> {
-            // TODO : ouvrir DetailRealisationActivity avec l'id de la réalisation
-        });
-
-        binding.recyclerRealisations.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerRealisations.setAdapter(adapter);
-        adapter.soumettreListe(toutesLesRealisations);
+//        adapter = new RealisationAdapter(realisation -> {
+//            // TODO : ouvrir DetailRealisationActivity avec l'id de la réalisation
+//        });
+//
+//        binding.recyclerRealisations.setLayoutManager(new LinearLayoutManager(this));
+//        binding.recyclerRealisations.setAdapter(adapter);
+//        adapter.soumettreListe(toutesLesRealisations);
     }
 
     private void configurerFiltres() {
-        binding.chipGroupSecteurs.setOnCheckedStateChangeListener((group, checkedIds) -> {
+        /*binding.chipGroupSecteurs.setOnCheckedStateChangeListener((group, checkedIds) -> {
             if (checkedIds.isEmpty()) return;
 
             int idSelectionne = checkedIds.get(0);
@@ -83,7 +99,7 @@ public class RealisationsActivity extends AppCompatActivity {
             } else if (idSelectionne == R.id.chipEau) {
                 adapter.soumettreListe(filtrerParSecteur("Eau"));
             }
-        });
+        });*/
     }
 
     private List<Realisation> filtrerParSecteur(String secteur) {

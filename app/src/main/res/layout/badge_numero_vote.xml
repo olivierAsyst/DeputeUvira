@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/badge_numero_prefix"
-        android:textColor="@color/on_accent"
+        android:textColor="@color/border_white_08"
         android:textSize="12sp"
         android:fontFamily="sans-serif-medium"/>
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:text="@string/numero_vote_valeur"
-        android:textColor="@color/on_accent"
+        android:textColor="@color/amber_bg_10"
         android:textSize="12sp"
         android:textStyle="bold" />
 

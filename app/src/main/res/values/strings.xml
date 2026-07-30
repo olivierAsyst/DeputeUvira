@@ -31,4 +31,33 @@
     <string name="filtre_education">Éducation</string>
     <string name="filtre_sante">Santé</string>
     <string name="filtre_eau">Eau</string>
+
+    <string name="eyebrow_depute">Député National · 2 Mandats</string>
+    <string name="localisation_depute">Uvira, Sud-Kivu · République Démocratique du Congo</string>
+    <string name="campagne_en_cours">Campagne électorale en cours</string>
+    <string name="votez_numero">Votez numéro</string>
+    <string name="circonscription_election">Élections législatives — Circonscription d\'Uvira</string>
+    <string name="slogan_depute">« Uvira debout, Congo debout ! »</string>
+    <string name="legende_slogan">Ensemble pour la République • 2018–2025</string>
+    <string name="valeur_projets">47+</string>
+    <string name="label_projets">Projets</string>
+    <string name="valeur_beneficiaires">15K+</string>
+    <string name="label_beneficiaires">Bénéficiaires</string>
+    <string name="action_agenda">Agenda</string>
+    <string name="action_tout_voir">Tout voir</string>
+    <string name="jour_evenement">25</string>
+    <string name="mois_evenement">Juil</string>
+    <string name="titre_evenement">Grand Meeting d\'Uvira Centre</string>
+    <string name="heure_lieu_evenement">10h00 — Stade Municipal d\'Uvira</string>
+    <string name="meeting_public_ouvert">Meeting public ouvert</string>
+    <string name="titre_dernieres_actualites">Dernières Actualités</string>
+    <string name="categorie_assemblee">ASSEMBLÉE</string>
+    <string name="titre_actu1">Interpellation sur la sécurité à Uvira</string>
+    <string name="date_actu1">18 Juil 2025</string>
+    <string name="categorie_terrain">TERRAIN</string>
+    <string name="titre_actu2">Visite du chantier de la maternité de Kiliba</string>
+    <string name="date_actu2">12 Juil 2025</string>
+    <string name="titre_realisations_phares">Réalisations Phares</string>
+    <string name="badge_votez">Votez</string>
+    <string name="badge_campagne">Campagne</string>
 </resources>

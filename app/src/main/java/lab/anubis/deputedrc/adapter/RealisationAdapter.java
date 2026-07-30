@@ -1,102 +1,59 @@
 package lab.anubis.deputedrc.adapter;
 
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import lab.anubis.deputedrc.R;
-import lab.anubis.deputedrc.databinding.ItemRealisationBinding;
+import lab.anubis.deputedrc.databinding.ItemRealisationPhareBinding;
 import lab.anubis.deputedrc.model.Realisation;
 
-public class RealisationAdapter extends RecyclerView.Adapter<RealisationAdapter.RealisationViewHolder> {
+public class RealisationAdapter extends RecyclerView.Adapter<RealisationAdapter.PhareViewHolder> {
 
-    public RealisationAdapter(OnRealisationClickListener listener) {
-        this.listener = listener;
-    }
+    private final List<Realisation> liste;
 
-    public interface OnRealisationClickListener{
-        void onRealisationClick(Realisation realisation);
-    }
-
-    private final List<Realisation> listeAffichee = new ArrayList<>();
-    private final OnRealisationClickListener listener;
-
-    public void soumettreListe(List<Realisation> nouvelleListe){
-        listeAffichee.clear();
-        listeAffichee.addAll(nouvelleListe);
-        notifyDataSetChanged();
+    public RealisationAdapter(List<Realisation> liste) {
+        this.liste = liste;
     }
 
     @NonNull
     @Override
-    public RealisationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemRealisationBinding binding = ItemRealisationBinding.inflate(
-                LayoutInflater.from(parent.getContext()), parent, false
-        );
-        return new RealisationViewHolder(binding);
+    public PhareViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemRealisationPhareBinding binding = ItemRealisationPhareBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false);
+        return new PhareViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RealisationViewHolder holder, int position) {
-        holder.bind(listeAffichee.get(position), listener);
+    public void onBindViewHolder(@NonNull PhareViewHolder holder, int position) {
+        holder.bind(liste.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return listeAffichee.size();
+        return liste.size();
     }
 
-    static class RealisationViewHolder extends RecyclerView.ViewHolder{
-        private final ItemRealisationBinding binding;
+    static class PhareViewHolder extends RecyclerView.ViewHolder {
+        private final ItemRealisationPhareBinding binding;
 
-        public RealisationViewHolder(ItemRealisationBinding binding) {
+        PhareViewHolder(ItemRealisationPhareBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(Realisation realisation, OnRealisationClickListener listener){
-            binding.tvTitreRealisation.setText(realisation.getTitre());
-            binding.tvSecteur.setText(realisation.getSecteur());
-            binding.tvLieuAnnee.setText(realisation.getAnnee() + " · " + realisation.getLieu());
-
-            appliquerCouleurSecteur(realisation.getSecteur());
-
-            binding.getRoot().setOnClickListener(v -> {
-                if (listener != null) listener.onRealisationClick(realisation);
-            });
+        void bind(Realisation r) {
+            binding.tvAnneePhare.setText("Complété " + r.getAnnee());
+            binding.tvTitrePhare.setText(r.getTitre());
+            binding.tvLieuPhare.setText(r.getLieu());
+            // Remplacez par une URL réelle ou une image locale en production
+            Glide.with(binding.getRoot().getContext())
+                    .load("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=240&fit=crop")
+                    .centerCrop()
+                    .into(binding.imgPhare);
         }
-
-        private void appliquerCouleurSecteur(String secteur) {
-            int couleurFond;
-            int couleurTexte;
-
-            switch (secteur) {
-                case "Santé":
-                    couleurFond = ContextCompat.getColor(binding.getRoot().getContext(), R.color.warning_bg);
-                    couleurTexte = ContextCompat.getColor(binding.getRoot().getContext(), R.color.warning);
-                    break;
-                case "Eau":
-                case "Infrastructures":
-                    couleurFond = ContextCompat.getColor(binding.getRoot().getContext(), R.color.info_bg);
-                    couleurTexte = ContextCompat.getColor(binding.getRoot().getContext(), R.color.info);
-                    break;
-                default: // Éducation et autres
-                    couleurFond = ContextCompat.getColor(binding.getRoot().getContext(), R.color.success_bg);
-                    couleurTexte = ContextCompat.getColor(binding.getRoot().getContext(), R.color.success);
-                    break;
-            }
-
-            GradientDrawable fond = (GradientDrawable) binding.tvSecteur.getBackground().mutate();
-            fond.setColor(couleurFond);
-            binding.tvSecteur.setTextColor(couleurTexte);
-        }
-
     }
 }

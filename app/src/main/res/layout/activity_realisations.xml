@@ -1,111 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
-    <LinearLayout
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/headerRealisations"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/background">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-        <!-- En-tête -->
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/surface"
-            android:padding="16dp">
+            android:layout_centerVertical="true"
+            android:text="@string/titre_ecran_realisations"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/titre_ecran_realisations"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif-medium" />
-
-            <include
-                android:id="@+id/includeBadge"
-                layout="@layout/badge_numero_vote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true" />
-
-        </RelativeLayout>
-
-        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-
-        <!-- Chips de filtre -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
+        <include
+            android:id="@+id/includeBadge"
+            layout="@layout/badge_numero_vote"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="10dp"
-            android:scrollbars="none">
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroupSecteurs"
+    </RelativeLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_deep" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupSecteurs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTous"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"
-                app:singleLine="true">
+                android:text="@string/filtre_tous"
+                android:checked="true" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipTous"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filtre_tous"
-                    android:checked="true" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEducation"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filtre_education" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipEducation"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filtre_education" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSante"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filtre_sante" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipSante"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filtre_sante" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEau"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filtre_eau" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipEau"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filtre_eau" />
+        </com.google.android.material.chip.ChipGroup>
 
-            </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
 
-        </HorizontalScrollView>
+    <!-- weight=1 : occupe tout l'espace restant, jamais recouvert -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRealisations"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_realisation" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerRealisations"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingTop="4dp"
-            android:clipToPadding="false"
-            tools:listitem="@layout/item_realisation"
-            xmlns:tools="http://schemas.android.com/tools" />
-
-    </LinearLayout>
+    <!-- vrai frère du LinearLayout, plus jamais superposé -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/surface"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>

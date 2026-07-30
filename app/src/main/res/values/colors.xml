@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#1D3A4A</color>
-    <color name="primary_dark">#12262F</color>
-    <color name="primary_light">#2E5266</color>
+    <!-- Fond -->
+    <color name="bg_deep">#07111F</color>
+    <color name="card_bg">#0F1E36</color>
+    <color name="nav_bg">#0A1727</color>
 
-    <!-- Accent : ocre discret, badge campagne et CTA -->
-    <color name="accent">#B9814A</color>
-    <color name="accent_dark">#96683A</color>
+    <!-- Couleurs RDC -->
+    <color name="primary_blue">#1565C0</color>
+    <color name="secondary_red">#C62828</color>
+    <color name="accent_amber">#F4C430</color>
+    <color name="accent_amber_light">#FBBF24</color>
+    <color name="on_amber">#07111F</color>
 
-    <!-- Fond et surfaces -->
-    <color name="background">#F7F4EF</color>
-    <color name="surface">#FFFFFF</color>
-    <color name="surface_alt">#EFEAE2</color>
+    <!-- Bordures translucides -->
+    <color name="border_white_08">#14FFFFFF</color>
+    <color name="border_white_10">#1AFFFFFF</color>
 
-    <!-- Textes -->
-    <color name="text_primary">#22292E</color>
-    <color name="text_secondary">#5B6670</color>
-    <color name="text_muted">#8A9198</color>
-    <color name="on_primary">#FFFFFF</color>
-    <color name="on_accent">#FFFFFF</color>
+    <!-- Fonds translucides -->
+    <color name="amber_bg_10">#1AF4C430</color>
+    <color name="green_bg_20">#334ADE80</color>
+    <color name="blue_bg_20">#3360A5FA</color>
+    <color name="purple_bg_20">#33C084FC</color>
 
-    <!-- États sémantiques (catégories réalisations) -->
-    <color name="success">#3E6B4F</color>
-    <color name="success_bg">#E4EEE7</color>
-    <color name="info">#2E5266</color>
-    <color name="info_bg">#E4EBEF</color>
-    <color name="warning">#96683A</color>
-    <color name="warning_bg">#F2E9DE</color>
+    <!-- Textes blancs à opacité variable -->
+    <color name="text_white_100">#FFFFFFFF</color>
+    <color name="text_white_80">#CCFFFFFF</color>
+    <color name="text_white_50">#80FFFFFF</color>
+    <color name="text_white_40">#66FFFFFF</color>
+    <color name="text_white_30">#4DFFFFFF</color>
+    <color name="text_white_25">#40FFFFFF</color>
 
-    <color name="divider">#E3DFD8</color>
+    <!-- Sémantiques -->
+    <color name="success_green">#4ADE80</color>
+    <color name="info_blue">#60A5FA</color>
+    <color name="purple_declaration">#C084FC</color>
 </resources>
