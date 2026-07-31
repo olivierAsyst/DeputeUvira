@@ -34,4 +34,13 @@
     <color name="success_green">#4ADE80</color>
     <color name="info_blue">#60A5FA</color>
     <color name="purple_declaration">#C084FC</color>
+
+    <color name="sector_education">#2563EB</color>
+    <color name="sector_sante">#DC2626</color>
+    <color name="sector_infrastructure">#EA580C</color>
+    <color name="sector_eau">#0891B2</color>
+    <color name="sector_securite">#9333EA</color>
+
+    <!-- Statut réalisation -->
+    <color name="status_complete">#22C55E</color>
 </resources>

@@ -60,4 +60,11 @@
     <string name="titre_realisations_phares">Réalisations Phares</string>
     <string name="badge_votez">Votez</string>
     <string name="badge_campagne">Campagne</string>
+
+    <string name="retour">Retour</string>
+    <string name="titre_ecran_detail_realisation">Réalisation</string>
+    <string name="label_beneficiaires_detail">Bénéficiaires</string>
+    <string name="label_financement_detail">Financement</string>
+    <string name="label_description_detail">Description</string>
+    <string name="action_partager_realisation">Partager cette réalisation</string>
 </resources>

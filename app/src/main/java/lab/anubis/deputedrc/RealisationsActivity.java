@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -59,49 +60,70 @@ public class RealisationsActivity extends AppCompatActivity {
 
     private void chargerDonneesDeDemonstration() {
         toutesLesRealisations.add(new Realisation("1",
-                "Réhabilitation de l'école de Kavimvira", "Éducation", "Kavimvira, Uvira", 2025,
+                "Réhabilitation de l'école de Kavimvira", "education", "Kavimvira, Uvira", 2025,
                 "Reconstruction de 6 salles de classe et fourniture de bancs pupitres.",
-                "600 élèves", "Fonds constit."));
+                "600 élèves", "Fonds constit.", "complete"));
 
         toutesLesRealisations.add(new Realisation("2",
-                "Forage d'eau potable — Kasenga", "Eau", "Kasenga, Haut-Katanga", 2024,
+                "Forage d'eau potable — Kasenga", "eau", "Kasenga, Haut-Katanga", 2024,
                 "Installation d'un forage desservant plus de 300 ménages.",
-                "300 ménages", "Partenaire ONG"));
+                "300 ménages", "Partenaire ONG", "complete"));
 
         toutesLesRealisations.add(new Realisation("3",
-                "Équipement du centre de santé de Baraka", "Santé", "Baraka, Fizi", 2024,
+                "Équipement du centre de santé de Baraka", "sante", "Baraka, Fizi", 2024,
                 "Don de matériel médical et de lits d'hospitalisation.",
-                "1 centre de santé", "Fonds constit."));
-    }
-
-    private void configurerListe() {
-//        adapter = new RealisationAdapter(realisation -> {
-//            // TODO : ouvrir DetailRealisationActivity avec l'id de la réalisation
-//        });
-//
-//        binding.recyclerRealisations.setLayoutManager(new LinearLayoutManager(this));
-//        binding.recyclerRealisations.setAdapter(adapter);
-//        adapter.soumettreListe(toutesLesRealisations);
+                "1 centre de santé", "Fonds constit.", "inprogress"));
     }
 
     private void configurerFiltres() {
-        /*binding.chipGroupSecteurs.setOnCheckedStateChangeListener((group, checkedIds) -> {
+        binding.chipGroupSecteurs.setOnCheckedStateChangeListener((group, checkedIds) -> {
             if (checkedIds.isEmpty()) return;
 
+            reinitialiserApparenceChips();
+
             int idSelectionne = checkedIds.get(0);
+            com.google.android.material.chip.Chip chipActif = binding.getRoot().findViewById(idSelectionne);
+            chipActif.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.accent_amber)));
+            chipActif.setTextColor(ContextCompat.getColor(this, R.color.on_amber));
+            chipActif.setChipStrokeWidth(0f);
 
             if (idSelectionne == R.id.chipTous) {
                 adapter.soumettreListe(toutesLesRealisations);
             } else if (idSelectionne == R.id.chipEducation) {
-                adapter.soumettreListe(filtrerParSecteur("Éducation"));
+                adapter.soumettreListe(filtrerParSecteur("education"));
             } else if (idSelectionne == R.id.chipSante) {
-                adapter.soumettreListe(filtrerParSecteur("Santé"));
+                adapter.soumettreListe(filtrerParSecteur("sante"));
             } else if (idSelectionne == R.id.chipEau) {
-                adapter.soumettreListe(filtrerParSecteur("Eau"));
+                adapter.soumettreListe(filtrerParSecteur("eau"));
             }
-        });*/
+        });
     }
 
+    private void reinitialiserApparenceChips() {
+        int[] tousLesChips = {R.id.chipTous, R.id.chipEducation, R.id.chipSante, R.id.chipEau};
+        for (int idChip : tousLesChips) {
+            com.google.android.material.chip.Chip chip = binding.getRoot().findViewById(idChip);
+            chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.card_bg)));
+            chip.setTextColor(ContextCompat.getColor(this, R.color.text_white_50));
+            chip.setChipStrokeColor(android.content.res.ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.border_white_10)));
+            chip.setChipStrokeWidth(1f);
+        }
+    }
+
+    private void configurerListe() {
+        adapter = new RealisationAdapter(realisation -> {
+            android.content.Intent intent = new android.content.Intent(this, RealisationDetailActivity.class);
+            intent.putExtra(RealisationDetailActivity.EXTRA_REALISATION, realisation);
+            startActivity(intent);
+        });
+
+        binding.recyclerRealisations.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerRealisations.setAdapter(adapter);
+        adapter.soumettreListe(toutesLesRealisations);
+    }
     private List<Realisation> filtrerParSecteur(String secteur) {
         List<Realisation> resultat = new ArrayList<>();
         for (Realisation r : toutesLesRealisations) {

@@ -8,60 +8,111 @@
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/bg_deep"
+    app:strokeColor="@color/border_white_08"
     app:strokeWidth="1dp"
-    app:cardBackgroundColor="@color/bg_deep">
+    app:cardBackgroundColor="@color/card_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgRealisation"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:background="@color/bg_deep"
-            android:src="@drawable/ic_photo_placeholder"
-            android:contentDescription="@null" />
+            android:layout_height="144dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            <ImageView
+                android:id="@+id/imgRealisation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@color/bg_deep"
+                android:contentDescription="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_gradient_hero" />
 
             <TextView
                 android:id="@+id/tvSecteur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_badge_secteur"
+                android:layout_gravity="top|start"
+                android:layout_margin="8dp"
                 android:paddingHorizontal="8dp"
-                android:paddingVertical="2dp"
-                android:textSize="10sp"
-                android:fontFamily="sans-serif-medium"
-                tools:text="Éducation"
-                xmlns:tools="http://schemas.android.com/tools" />
+                android:paddingVertical="3dp"
+                android:textColor="@color/text_white_100"
+                android:textSize="9sp"
+                android:fontFamily="sans-serif-black"
+                tools:text="ÉDUCATION" />
+
+            <TextView
+                android:id="@+id/tvStatut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:textSize="9sp"
+                android:fontFamily="sans-serif-black"
+                tools:text="✓ Complété" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
 
             <TextView
                 android:id="@+id/tvTitreRealisation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/bg_deep"
+                android:textColor="@color/text_white_100"
                 android:textSize="13sp"
                 android:fontFamily="sans-serif-medium"
                 tools:text="Réhabilitation de l'école de Kavimvira" />
 
             <TextView
-                android:id="@+id/tvLieuAnnee"
+                android:id="@+id/tvDescriptionRealisation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/bg_deep"
-                android:textSize="12sp"
-                tools:text="2025 · Kavimvira, Uvira" />
+                android:textColor="@color/text_white_50"
+                android:textSize="11sp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Reconstruction de 6 salles de classe et fourniture de bancs pupitres." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvLieu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_white_30"
+                    android:textSize="10sp"
+                    tools:text="📍 Kavimvira, Uvira" />
+
+                <TextView
+                    android:id="@+id/tvAnnee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_white_30"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif-medium"
+                    tools:text="2025" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

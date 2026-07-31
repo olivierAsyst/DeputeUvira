@@ -1,6 +1,9 @@
 package lab.anubis.deputedrc.model;
 
-public class Realisation {
+import java.io.Serializable;
+
+public class Realisation implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final String id;
     private final String titre;
     private final String secteur; // Éducation, Santé, Eau, Infrastructures...
@@ -9,8 +12,9 @@ public class Realisation {
     private final String description;
     private final String beneficiaires;
     private final String financement;
+    private final String statut;
 
-    public Realisation(String id, String titre, String secteur, String lieu, int annee, String description, String beneficiaires, String financement) {
+    public Realisation(String id, String titre, String secteur, String lieu, int annee, String description, String beneficiaires, String financement, String statut) {
         this.id = id;
         this.titre = titre;
         this.secteur = secteur;
@@ -19,6 +23,7 @@ public class Realisation {
         this.description = description;
         this.beneficiaires = beneficiaires;
         this.financement = financement;
+        this.statut = statut;
     }
 
     public String getId() {
@@ -52,4 +57,9 @@ public class Realisation {
     public String getFinancement() {
         return financement;
     }
+
+    public String getStatut() {
+        return statut;
+    }
+    public boolean estComplete() { return "complete".equals(statut); }
 }

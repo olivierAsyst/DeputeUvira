@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import lab.anubis.deputedrc.adapter.RealisationAdapter;
+import lab.anubis.deputedrc.adapter.RealisationPhareAdapter;
 import lab.anubis.deputedrc.databinding.ActivityMainBinding;
 import lab.anubis.deputedrc.model.Realisation;
 
@@ -52,13 +52,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.bottomNavigation.getPaddingRight(),
                     paddingBottomOriginalNav + systemBars.bottom
             );
-//
-//            binding.bottomNavigation.setPadding(
-//                    binding.bottomNavigation.getPaddingLeft(),
-//                    binding.bottomNavigation.getPaddingTop(),
-//                    binding.bottomNavigation.getPaddingRight(),
-//                    systemBars.bottom + paddingBottomOriginalNav
-//            );
 
             return insets;
         });
@@ -93,16 +86,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void configurerRealisationsPhares() {
         List<Realisation> phares = new ArrayList<>();
-        phares.add(new Realisation("1", "École Primaire de Sange", "Éducation", "Sange", 2020,
-                "", "300 élèves", ""));
-        phares.add(new Realisation("2", "Centre de Santé d'Uvira Nord", "Santé", "Uvira Nord", 2021,
-                "", "", ""));
-        phares.add(new Realisation("3", "Route Uvira–Kiliba", "Infrastructure", "Kiliba", 2022,
-                "", "", ""));
+        phares.add(new Realisation("1", "École Primaire de Sange", "education", "Sange", 2020,
+                "", "300 élèves", "", "complete"));
+        phares.add(new Realisation("2", "Centre de Santé d'Uvira Nord", "sante", "Uvira Nord", 2021,
+                "", "", "", "complete"));
+        phares.add(new Realisation("3", "Route Uvira–Kiliba", "infrastructure", "Kiliba", 2022,
+                "", "", "", "inprogress"));
 
         binding.recyclerPhares.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.recyclerPhares.setAdapter(new RealisationAdapter(phares));
+        binding.recyclerPhares.setAdapter(new RealisationPhareAdapter(phares));
     }
 
 

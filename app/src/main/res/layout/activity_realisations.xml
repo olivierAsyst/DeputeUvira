@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_deep">
+
+    <include layout="@layout/flag_strip" />
 
     <RelativeLayout
         android:id="@+id/headerRealisations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bg_deep"
         android:padding="16dp">
 
         <TextView
@@ -17,20 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/titre_ecran_realisations"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium" />
-
-        <include
-            android:id="@+id/includeBadge"
-            layout="@layout/badge_numero_vote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true" />
+            android:textColor="@color/text_white_100"
+            android:textSize="18sp"
+            android:fontFamily="@font/playfair_display"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_deep" />
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border_white_08" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -48,38 +46,52 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTous"
-                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkable="true"
                 android:text="@string/filtre_tous"
-                android:checked="true" />
+                android:checked="true"
+                app:chipBackgroundColor="@color/accent_amber"
+                android:textColor="@color/on_amber"
+                app:chipStrokeWidth="0dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipEducation"
-                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filtre_education" />
+                android:checkable="true"
+                android:text="@string/filtre_education"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_white_50"
+                app:chipStrokeColor="@color/border_white_10"
+                app:chipStrokeWidth="1dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipSante"
-                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filtre_sante" />
+                android:checkable="true"
+                android:text="@string/filtre_sante"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_white_50"
+                app:chipStrokeColor="@color/border_white_10"
+                app:chipStrokeWidth="1dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipEau"
-                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filtre_eau" />
+                android:checkable="true"
+                android:text="@string/filtre_eau"
+                app:chipBackgroundColor="@color/card_bg"
+                android:textColor="@color/text_white_50"
+                app:chipStrokeColor="@color/border_white_10"
+                app:chipStrokeWidth="1dp" />
 
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>
 
-    <!-- weight=1 : occupe tout l'espace restant, jamais recouvert -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerRealisations"
         android:layout_width="match_parent"
@@ -90,11 +102,11 @@
         android:clipToPadding="false"
         tools:listitem="@layout/item_realisation" />
 
-    <!-- vrai frère du LinearLayout, plus jamais superposé -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/nav_bg"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
